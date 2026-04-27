@@ -1,0 +1,25 @@
+name: building
+on:
+  push:
+    branches: [main]
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend
+        
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Initialize Node
+        uses: actions/setup-node@v4
+    
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: run build   
+        run: npm run build
